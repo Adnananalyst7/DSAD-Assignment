@@ -1,0 +1,105 @@
+Complete Railway Structure:
+Empty
+Error:
+Train not found: T999
+Train Added:
+(T201, EdgeExpress)
+Error:
+Train already exists: T201
+Coach Added:
+(C1, AC, Capacity=2)
+Error:
+Coach already exists: C1
+Error:
+Invalid coach capacity: 0
+Coach Added:
+(C2, Sleeper, Capacity=3)
+Error:
+Coach not found: C9
+Error:
+Train not found: T404
+Ticket Confirmed:
+(P001, Asha, Seat No:1)
+Ticket Confirmed:
+(P002, Bharat, Seat No:2)
+Added to Waiting List:
+(P003, Charu)
+Added to Waiting List:
+(P004, Dev)
+Error:
+Passenger already exists: P001
+Train Details:
+Train: T201 - EdgeExpress
+Coach: C1
+Passengers:
+(P001, Asha, Seat 1)
+(P002, Bharat, Seat 2)
+Waiting List:
+(P004, Dev)
+(P003, Charu)
+Coach: C2
+Passengers:
+Empty
+
+Error:
+Passenger not found: P999
+Ticket Cancelled:
+(P002, Bharat)
+Waiting List Passenger Promoted:
+(P004, Dev, Seat No:2)
+Waiting List Ticket Cancelled:
+(P003, Charu)
+Ticket Cancelled:
+(P004, Dev)
+Train Details:
+Train: T201 - EdgeExpress
+Coach: C1
+Passengers:
+(P001, Asha, Seat 1)
+Coach: C2
+Passengers:
+Empty
+
+Error:
+Coach not empty, cannot detach: C1
+Ticket Cancelled:
+(P001, Asha)
+Coach Detached:
+(C1)
+Train Details:
+Train: T201 - EdgeExpress
+Coach: C2
+Passengers:
+Empty
+
+Error:
+Cannot split from first coach: C2
+Coach Added:
+(C3, General, Capacity=2)
+Train Split Successful:
+New Train Created Starting From Coach C3
+Complete Railway Structure:
+Train: T201 - EdgeExpress
+Coach: C2
+Passengers:
+Empty
+
+Train: T201_S1 - EdgeExpress_Split
+Coach: C3
+Passengers:
+Empty
+
+Complete Railway Structure Displayed Successfully
+No Cycle Detected:
+Train T201
+Error:
+Train not found: T404
+Train Removed:
+(T201_S1, EdgeExpress_Split)
+Complete Railway Structure:
+Train: T201 - EdgeExpress
+Coach: C2
+Passengers:
+Empty
+
+Complete Railway Structure Displayed Successfully

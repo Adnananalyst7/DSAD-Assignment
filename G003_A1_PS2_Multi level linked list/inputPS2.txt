@@ -1,0 +1,11 @@
+addTrain::T101:ChennaiExpress1234:Chennai:Delhi
+addCoach::T101:C1:AC:2
+addCoach::T101:C2:Sleeper:2
+reserveTicket::T101:C1:P501:Abhishek:Chennai:Delhi
+reserveTicket::T101:C1:P502:Divya:Chennai:Nagpur
+reserveTicket::T101:C1:P503:Rahul:Chennai:Bhopal
+displayTrain::T101
+cancelTicket::T101:C1:P502
+reserveTicket::T101:C2:P504:Kiran:Chennai:Delhi
+splitTrain::T101:C2
+displayAll

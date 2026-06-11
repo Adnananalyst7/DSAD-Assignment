@@ -1,0 +1,11 @@
+addTrain::T601:DetachExpress:Pune:Goa
+addCoach::T601:C1:AC:2
+addCoach::T601:C2:Sleeper:2
+detachCoach::T601:C2
+displayTrain::T601
+detachCoach::T601:C9
+reserveTicket::T601:C1:P401:Isha:Pune:Goa
+detachCoach::T601:C1
+cancelTicket::T601:C1:P401
+detachCoach::T601:C1
+displayAll

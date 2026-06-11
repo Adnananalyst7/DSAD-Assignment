@@ -1,0 +1,47 @@
+Train Added:
+(T501, NorthLine)
+Train Added:
+(T502, SouthLine)
+Coach Added:
+(C1, AC, Capacity=1)
+Coach Added:
+(C1, Sleeper, Capacity=1)
+Ticket Confirmed:
+(P301, Arjun, Seat No:1)
+Ticket Confirmed:
+(P301, Arjun, Seat No:1)
+Complete Railway Structure:
+Train: T501 - NorthLine
+Coach: C1
+Passengers:
+(P301, Arjun, Seat 1)
+
+Train: T502 - SouthLine
+Coach: C1
+Passengers:
+(P301, Arjun, Seat 1)
+
+Complete Railway Structure Displayed Successfully
+Ticket Cancelled:
+(P301, Arjun)
+Train Details:
+Train: T501 - NorthLine
+Coach: C1
+Passengers:
+Empty
+
+Train Details:
+Train: T502 - SouthLine
+Coach: C1
+Passengers:
+(P301, Arjun, Seat 1)
+
+Train Removed:
+(T501, NorthLine)
+Complete Railway Structure:
+Train: T502 - SouthLine
+Coach: C1
+Passengers:
+(P301, Arjun, Seat 1)
+
+Complete Railway Structure Displayed Successfully

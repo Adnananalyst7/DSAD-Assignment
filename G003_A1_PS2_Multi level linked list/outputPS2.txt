@@ -1,0 +1,45 @@
+Train Added:
+(T101, ChennaiExpress1234)
+Coach Added:
+(C1, AC, Capacity=2)
+Coach Added:
+(C2, Sleeper, Capacity=2)
+Ticket Confirmed:
+(P501, Abhishek, Seat No:1)
+Ticket Confirmed:
+(P502, Divya, Seat No:2)
+Added to Waiting List:
+(P503, Rahul)
+Train Details:
+Train: T101 - ChennaiExpress1234
+Coach: C1
+Passengers:
+(P501, Abhishek, Seat 1)
+(P502, Divya, Seat 2)
+Waiting List:
+(P503, Rahul)
+Coach: C2
+Passengers:
+Empty
+
+Ticket Cancelled:
+(P502, Divya)
+Waiting List Passenger Promoted:
+(P503, Rahul, Seat No:2)
+Ticket Confirmed:
+(P504, Kiran, Seat No:1)
+Train Split Successful:
+New Train Created Starting From Coach C2
+Complete Railway Structure:
+Train: T101 - ChennaiExpress1234
+Coach: C1
+Passengers:
+(P501, Abhishek, Seat 1)
+(P503, Rahul, Seat 2)
+
+Train: T101_S1 - ChennaiExpress1234_Split
+Coach: C2
+Passengers:
+(P504, Kiran, Seat 1)
+
+Complete Railway Structure Displayed Successfully
