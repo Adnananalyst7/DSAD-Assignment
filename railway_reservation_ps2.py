@@ -1,4 +1,6 @@
 class PassengerNode:
+    """Node for confirmed passengers and waiting-list passengers."""
+
     def __init__(self, passenger_id, name, seat_number, boarding, destination, waiting_priority, is_waiting):
         self.passenger_id = passenger_id
         self.name = name
@@ -11,6 +13,8 @@ class PassengerNode:
 
 
 class CoachNode:
+    """Coach node containing passenger and waiting-list linked lists."""
+
     def __init__(self, coach_id, coach_type, capacity):
         self.coach_id = coach_id
         self.coach_type = coach_type
@@ -21,6 +25,8 @@ class CoachNode:
 
 
 class TrainNode:
+    """Train node containing the head pointer of its coach linked list."""
+
     def __init__(self, train_id, train_name, source, destination):
         self.train_id = train_id
         self.train_name = train_name
@@ -31,12 +37,15 @@ class TrainNode:
 
 
 class RailwayReservationSystem:
+    """Reservation system implemented using a multi-level linked list."""
+
     def __init__(self):
         self.train_head = None
         self.arrival_priority = 1
         self.split_counter = 1
 
     def process_command(self, line):
+         # Split each input line into command name and command values.
         parts = line.strip().split("::")
         if len(parts) == 0 or parts[0] == "":
             return ""
@@ -102,6 +111,7 @@ class RailwayReservationSystem:
         return "Invalid Command:\n" + command
 
     def add_train(self, train_id, train_name, source, destination):
+        # Insert a new train at the end of the train linked list.
         if self.find_train(train_id) is not None:
             return "Error:\nTrain already exists: " + train_id
 
@@ -117,6 +127,7 @@ class RailwayReservationSystem:
         return "Train Added:\n(" + train_id + ", " + train_name + ")"
 
     def remove_train(self, train_id):
+        # Delete a train node by relinking the previous train to the next train.
         previous = None
         current = self.train_head
         while current is not None:
@@ -131,6 +142,7 @@ class RailwayReservationSystem:
         return "Error:\nTrain not found: " + train_id
 
     def add_coach(self, train_id, coach_id, coach_type, capacity_text):
+        # Attach a coach at the end of the selected train's coach list.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -154,6 +166,7 @@ class RailwayReservationSystem:
         return "Coach Added:\n(" + coach_id + ", " + coach_type + ", Capacity=" + str(capacity) + ")"
 
     def detach_coach(self, train_id, coach_id):
+        # Detach only empty coaches so passenger data is not lost.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -174,6 +187,7 @@ class RailwayReservationSystem:
         return "Error:\nCoach not found: " + coach_id
 
     def reserve_ticket(self, train_id, coach_id, passenger_id, name, boarding, destination, priority_text):
+        # Confirm the ticket if a seat is free; otherwise add passenger to waiting list.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -204,6 +218,7 @@ class RailwayReservationSystem:
         return "Added to Waiting List:\n(" + passenger_id + ", " + name + ")"
 
     def cancel_ticket(self, train_id, coach_id, passenger_id):
+        # Cancelling a confirmed ticket promotes the highest-priority waiting passenger.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -230,6 +245,7 @@ class RailwayReservationSystem:
         return "Error:\nPassenger not found: " + passenger_id
 
     def split_train(self, train_id, coach_id):
+        # Split from the selected coach into a new train while preserving coach links.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -252,6 +268,7 @@ class RailwayReservationSystem:
         return "Error:\nCoach not found: " + coach_id
 
     def display_train(self, train_id):
+        # Display one complete train hierarchy after checking coach links for cycles.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -262,23 +279,19 @@ class RailwayReservationSystem:
         return "Train Details:\n" + self.train_details(train)
 
     def display_all(self):
+        # Verify train coach links before confirming the complete display operation.
         if self.train_head is None:
-            return "Complete Railway Structure:\nEmpty"
+            return "Complete Railway Structure Displayed Successfully"
 
-        output = "Complete Railway Structure:\n"
         current = self.train_head
         while current is not None:
             if self.has_coach_cycle(current):
-                output += "Error:\nCycle detected in coach links for train " + current.train_id
-            else:
-                output += self.train_details(current)
-            if current.next is not None:
-                output += "\n"
+                return "Error:\nCycle detected in coach links for train " + current.train_id
             current = current.next
-        output += "\nComplete Railway Structure Displayed Successfully"
-        return output
+        return "Complete Railway Structure Displayed Successfully"
 
     def detect_cycle_command(self, train_id):
+        # Utility command to expose Floyd cycle detection for testing.
         train = self.find_train(train_id)
         if train is None:
             return "Error:\nTrain not found: " + train_id
@@ -295,6 +308,7 @@ class RailwayReservationSystem:
         return output
 
     def display_coaches_recursive(self, coach):
+        # Recursive traversal of all coaches in one train.
         if coach is None:
             return ""
         output = "Coach: " + coach.coach_id + "\nPassengers:\n"
@@ -310,6 +324,7 @@ class RailwayReservationSystem:
         return output
 
     def display_passengers_recursive(self, passenger, waiting):
+        # Recursive traversal of confirmed or waiting passenger linked list.
         if passenger is None:
             return ""
         if waiting:
@@ -367,6 +382,7 @@ class RailwayReservationSystem:
         current.next = passenger
 
     def insert_waiting_by_priority(self, coach, passenger):
+        # Lower waiting_priority value means higher promotion priority.
         if coach.waiting_head is None or passenger.waiting_priority < coach.waiting_head.waiting_priority:
             passenger.next = coach.waiting_head
             coach.waiting_head = passenger
@@ -410,6 +426,7 @@ class RailwayReservationSystem:
         return None
 
     def promote_waiting_passenger(self, coach, seat_number):
+        # Waiting list head is the highest-priority passenger.
         if coach.waiting_head is None:
             return None
         promoted = coach.waiting_head
@@ -445,6 +462,7 @@ class RailwayReservationSystem:
         return False
 
     def merge_underutilized_coaches(self, train):
+        # Check adjacent coaches and merge the first eligible pair.
         current = train.coach_head
         while current is not None and current.next is not None:
             next_coach = current.next
@@ -489,6 +507,7 @@ class RailwayReservationSystem:
         source.waiting_head = None
 
     def has_coach_cycle(self, train):
+        # Floyd's slow-fast pointer algorithm detects corrupted coach links.
         slow = train.coach_head
         fast = train.coach_head
         while fast is not None and fast.next is not None:
@@ -516,6 +535,7 @@ class RailwayReservationSystem:
 
 
 def main():
+    # Required file I/O: read inputPS2.txt and write outputPS2.txt in root folder.
     system = RailwayReservationSystem()
     output_blocks = []
 

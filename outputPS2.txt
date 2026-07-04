@@ -1,47 +1,33 @@
 Train Added:
-(T501, NorthLine)
-Train Added:
-(T502, SouthLine)
+(T101, ChennaiExpress)
 Coach Added:
-(C1, AC, Capacity=1)
+(C1, AC, Capacity=2)
 Coach Added:
-(C1, Sleeper, Capacity=1)
+(C2, Sleeper, Capacity=2)
 Ticket Confirmed:
-(P301, Arjun, Seat No:1)
+(P501, Arun, Seat No:1)
 Ticket Confirmed:
-(P301, Arjun, Seat No:1)
-Complete Railway Structure:
-Train: T501 - NorthLine
-Coach: C1
-Passengers:
-(P301, Arjun, Seat 1)
-
-Train: T502 - SouthLine
-Coach: C1
-Passengers:
-(P301, Arjun, Seat 1)
-
-Complete Railway Structure Displayed Successfully
-Ticket Cancelled:
-(P301, Arjun)
+(P502, Divya, Seat No:2)
+Added to Waiting List:
+(P503, Rahul)
 Train Details:
-Train: T501 - NorthLine
+Train: T101 - ChennaiExpress
 Coach: C1
+Passengers:
+(P501, Arun, Seat 1)
+(P502, Divya, Seat 2)
+Waiting List:
+(P503, Rahul)
+Coach: C2
 Passengers:
 Empty
 
-Train Details:
-Train: T502 - SouthLine
-Coach: C1
-Passengers:
-(P301, Arjun, Seat 1)
-
-Train Removed:
-(T501, NorthLine)
-Complete Railway Structure:
-Train: T502 - SouthLine
-Coach: C1
-Passengers:
-(P301, Arjun, Seat 1)
-
+Ticket Cancelled:
+(P502, Divya)
+Waiting List Passenger Promoted:
+(P503, Rahul, Seat No:2)
+Ticket Confirmed:
+(P504, Kiran, Seat No:1)
+Train Split Successful:
+New Train Created Starting From Coach C2
 Complete Railway Structure Displayed Successfully
